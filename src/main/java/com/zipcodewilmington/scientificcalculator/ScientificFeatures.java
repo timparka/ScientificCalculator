@@ -5,10 +5,14 @@ public class ScientificFeatures {
 public void switchDisplayMode() {
 
 }
-public void trigFunctions() {
+public void trigFunc() {
 
 }
 
+public void logarithmicFunc() {
 
+}
+public void factorialFunc(){
 
+}
 }
