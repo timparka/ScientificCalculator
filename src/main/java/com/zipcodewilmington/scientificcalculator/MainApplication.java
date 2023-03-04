@@ -5,6 +5,9 @@ package com.zipcodewilmington.scientificcalculator;
  */
 public class MainApplication {
     public static void main(String[] args) {
+        ScientificFeatures rotates = new ScientificFeatures();
+        rotates.switchDisplayMode();
+        rotates.switchDisplayMode();
 //        Console.println("Welcome to my calculator!");
 //        String s = Console.getStringInput("Enter a string");
 //        Integer i = Console.getIntegerInput("Enter an integer");
