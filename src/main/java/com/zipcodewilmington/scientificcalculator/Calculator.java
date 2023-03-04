@@ -3,12 +3,13 @@ package com.zipcodewilmington.scientificcalculator;
 import java.util.Scanner;
 
 public class Calculator {
-    public static void main(String[] args) {
         int num1 = 0;
         int num2 = 0;
         char operator;
         double answer = 0.0;
-        Scanner scanner;
+        Scanner scanner = new Scanner(System.in);
+
+
     public void run() {
             System.out.println("Enter a number: ");
             num1 = scanner.nextInt();
