@@ -4,12 +4,8 @@ import java.util.Scanner;
 import org.codehaus.plexus.util.cli.Commandline;
 
 public class ScientificFeatures {
-    String display = "default";
     String mode = "radians";
     double result;
-    double num1;
-    double num2;
-    String operator;
     double mem = 0;
     Scanner sc = new Scanner(System.in);
 
@@ -56,38 +52,38 @@ public class ScientificFeatures {
     }
 
     //gets user input and spits out sin value
-    public double sin(double userInput) {
-        result = Math.sin(userInput);
+    public double sin(double display) {
+        result = Math.sin(display);
         return result;
     }
 
     //gets user input and spits out cos value
-    public double cos(double userInput) {
-        result = Math.cos(userInput);
+    public double cos(double display) {
+        result = Math.cos(display);
         return result;
     }
 
     //gets user input and spits out tan value
-    public double tan(double userInput) {
-        result = Math.tan(userInput);
+    public double tan(double display) {
+        result = Math.tan(display);
         return result;
     }
 
     //gets user input and spits out inverse sin value
-    public double invSin(double userInput) {
-        result = Math.asin(userInput);
+    public double invSin(double display) {
+        result = Math.asin(display);
         return result;
     }
 
     //gets user input and spits out inverse cos value
-    public double invCos(double userInput) {
-        result = Math.acos(userInput);
+    public double invCos(double display) {
+        result = Math.acos(display);
         return result;
     }
 
     //gets user input and spits out inverse tan value
-    public double invTan(double userInput) {
-        result = Math.atan(userInput);
+    public double invTan(double display) {
+        result = Math.atan(display);
         return result;
     }
 
@@ -111,61 +107,61 @@ public class ScientificFeatures {
 
 
         //gets user input and uses log base 10 function on number
-        public double log(double userInput) {
-            result = Math.log10(userInput);
+        public double log(double display) {
+            result = Math.log10(display);
             return result;
         }
 
         //gets user input and uses ln on number
-        public double invLog(double userInput) {
-            //result = Math.(userInput);
+        public double invLog(double display) {
+            //result = Math.(display);
             return result;
         }
 
     //gets user input and
-    public double ln(double userInput) {
-        result = Math.log(userInput);
+    public double ln(double display) {
+        result = Math.log(display);
         return result;
     }
 
-    public double invLn(double userInput) {
-      //  result = Math.(userInput);
+    public double invLn(double display) {
+      //  result = Math.(display);
         return result;
     }
 
 
-    public double factorialFunc(double userInput) {
-        for (int i = 0; i <= userInput; i++) {
+    public double factorialFunc(double display) {
+        for (int i = 0; i <= display; i++) {
             result *= i;
         }
         return result;
     }
 
-    public void run(String userInput) {
-        if (operator.equals("cycled")) {
+    public void run(String display) {
+        if (display.equals("cycled")) {
             this.switchDisplayMode();
-        } else if (operator.equals("dmode")) {
+        } else if (display.equals("dmode")) {
             System.out.println("Please choose display mode: ");
             display = sc.nextLine();
             this.switchDisplayMode(display);
-        } else if (operator.equals("cycleu")) {
+        } else if (display.equals("cycleu")) {
             this.switchUnitsMode();
-        }else if (operator.equals("umode")) {
+        }else if (display.equals("umode")) {
             System.out.println("Please choose display mode: ");
             mode = sc.nextLine();
             this.switchUnitsMode(mode);
-        } else if (operator.equals("sin")) {
-            this.sin();
-        } else if (operator.equals("cos")) {
+        } else if (display.equals("sin")) {
+            this.sin(display);
+        } else if (display.equals("cos")) {
             this.cos();
-        } else if (operator.equals("tan")) {
+        } else if (display.equals("tan")) {
             this.tan();
-        } else if (operator.equals("invsin")) {
+        } else if (display.equals("invsin")) {
             this.invSin();
-        } else if (operator.equals("invcos")) {
+        } else if (display.equals("invcos")) {
             this.invCos();
-        } else if (operator.equals("invtan")) {
-            this.invTan();
+        } else if (display.equals("invtan")) {
+            this.invTan(userInput);
         }
     }
 }
