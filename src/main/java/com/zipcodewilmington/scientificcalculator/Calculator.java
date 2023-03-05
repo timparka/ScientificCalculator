@@ -11,7 +11,7 @@ public class Calculator {
         Scanner scanner = new Scanner(System.in);
 
 
-    public void run() {
+    public void run(String userInput) {
             System.out.println("Enter a number: ");
             num1 = scanner.nextInt();
 

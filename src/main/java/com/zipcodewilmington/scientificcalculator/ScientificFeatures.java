@@ -56,46 +56,39 @@ public class ScientificFeatures {
     }
 
     //gets user input and spits out sin value
-    public void sin() {
-        System.out.println("Please enter the number you want to sine: ");
-        num1 = sc.nextInt();
-        result = Math.sin(num1);
-        System.out.println(result);
+    public double sin(double userInput) {
+        result = Math.sin(userInput);
+        return result;
     }
 
     //gets user input and spits out cos value
-    public void cos() {
-        System.out.println("Please enter the number you want to cos: ");
-        num1 = sc.nextInt();
-        result = Math.cos(num1);
+    public double cos(double userInput) {
+        result = Math.cos(userInput);
+        return result;
     }
 
     //gets user input and spits out tan value
-    public void tan() {
-        System.out.println("Please enter the number you want to tan: ");
-        num1 = sc.nextInt();
-        result = Math.tan(num1);
+    public double tan(double userInput) {
+        result = Math.tan(userInput);
+        return result;
     }
 
     //gets user input and spits out inverse sin value
-    public void invSin() {
-        System.out.println("Please enter the number you want to inverse sin: ");
-        num1 = sc.nextInt();
-        result = Math.asin(num1);
+    public double invSin(double userInput) {
+        result = Math.asin(userInput);
+        return result;
     }
 
     //gets user input and spits out inverse cos value
-    public void invCos() {
-        System.out.println("Please enter the number you want to inverse cos: ");
-        num1 = sc.nextInt();
-        result = Math.acos(num1);
+    public double invCos(double userInput) {
+        result = Math.acos(userInput);
+        return result;
     }
 
     //gets user input and spits out inverse tan value
-    public void invTan() {
-        System.out.println("Please enter the number you want to inverse tan: ");
-        num1 = sc.nextInt();
-        result = Math.atan(num1);
+    public double invTan(double userInput) {
+        result = Math.atan(userInput);
+        return result;
     }
 
     //switches units from degrees to radians
@@ -118,47 +111,37 @@ public class ScientificFeatures {
 
 
         //gets user input and uses log base 10 function on number
-    public void log() {
-        System.out.println("Please enter number to log");
-            num1 = sc.nextInt();
-            result = Math.log10(num1);
+        public double log(double userInput) {
+            result = Math.log10(userInput);
+            return result;
         }
 
         //gets user input and uses ln on number
-    public void invLog() {
-        System.out.println("Please enter number to log");
-        num1 = sc.nextInt();
-        //result = Math.(num1);
-    }
+        public double invLog(double userInput) {
+            //result = Math.(userInput);
+            return result;
+        }
 
     //gets user input and
-    public void logE() {
-        System.out.println("Please enter number to log by natural");
-        num1 = sc.nextInt();
-        result = Math.log(num1);
+    public double ln(double userInput) {
+        result = Math.log(userInput);
+        return result;
     }
 
-    public void invLogE() {
-        System.out.println("Please enter number to log");
-        num1 = sc.nextInt();
-        result = Math.log10(num1);
+    public double invLn(double userInput) {
+      //  result = Math.(userInput);
+        return result;
     }
 
 
-    public void factorialFunc() {
-        System.out.println("Please enter number for factorial of number");
-        num1 = sc.nextInt();
-        for (int i = 0; i <= num1; i++) {
+    public double factorialFunc(double userInput) {
+        for (int i = 0; i <= userInput; i++) {
             result *= i;
         }
-        System.out.println(result);
+        return result;
     }
 
-    public void run() {
-
-
-        System.out.println("please pick a function: ");
-        operator = sc.nextLine();
+    public void run(String userInput) {
         if (operator.equals("cycled")) {
             this.switchDisplayMode();
         } else if (operator.equals("dmode")) {
