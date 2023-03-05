@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Calculator {
         int num1 = 0;
         int num2 = 0;
+        int tempNum = 0;
         char operator;
         double answer = 0.0;
         Scanner scanner = new Scanner(System.in);
