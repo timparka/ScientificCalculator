@@ -142,6 +142,8 @@ public class ScientificFeatures {
         if (userInput.equals("cycled")) {
             this.switchDisplayMode();
             return display;
+        } else if (userInput.equals("dmode")) {
+            this.switchDisplayMode();
         }
 
 //        else if (userInput.equals("dmode")) {
