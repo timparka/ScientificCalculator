@@ -4,6 +4,7 @@ import java.util.Scanner;
 import org.codehaus.plexus.util.cli.Commandline;
 
 public class ScientificFeatures {
+    String scientificDisplay = "";
     String mode = "radians";
     double result;
     double mem = 0;
@@ -14,16 +15,16 @@ public class ScientificFeatures {
     }
     //this method should get current display and switch to next default mode
     public void switchDisplayMode() {
-        if (display.equals("default")) {
-            display = "binary";
-        } else if (display.equals("binary")) {
-            display = "octal";
-        } else if (display.equals("octal")) {
-            display = "decimal";
-        } else if (display.equals("decimal")) {
-            display = "hexadecimal";
-        } else if (display.equals("hexadecimal"))
-            display = "default";
+        if (scientificDisplay.equals("default")) {
+            scientificDisplay = "binary";
+        } else if (scientificDisplay.equals("binary")) {
+            scientificDisplay = "octal";
+        } else if (scientificDisplay.equals("octal")) {
+            scientificDisplay = "decimal";
+        } else if (scientificDisplay.equals("decimal")) {
+            scientificDisplay = "hexadecimal";
+        } else if (scientificDisplay.equals("hexadecimal"))
+            scientificDisplay = "default";
     }
 
     //method provides a way to switch displays manually
@@ -34,7 +35,7 @@ public class ScientificFeatures {
                 && !display.equals("hexadecimal")) {
             throw new IllegalArgumentException("Enter correct value.");
         } else {
-            this.display = display;
+            this.scientificDisplay = display;
         }
     }
 
@@ -98,7 +99,7 @@ public class ScientificFeatures {
 
     //method to switch modes manually and exits program if user enters invalid response
     public void switchUnitsMode(String mode) {
-            if (!mode.equals("degrees") && !display.equals("radians")) {
+            if (!mode.equals("degrees") && !mode.equals("radians")) {
                 throw new IllegalArgumentException("Enter correct value.");
             } else {
                 this.mode = mode;
@@ -137,31 +138,38 @@ public class ScientificFeatures {
         return result;
     }
 
-    public void run(String display) {
-        if (display.equals("cycled")) {
+    public double run(String userInput, double display) {
+        if (userInput.equals("cycled")) {
             this.switchDisplayMode();
-        } else if (display.equals("dmode")) {
-            System.out.println("Please choose display mode: ");
-            display = sc.nextLine();
-            this.switchDisplayMode(display);
-        } else if (display.equals("cycleu")) {
-            this.switchUnitsMode();
-        }else if (display.equals("umode")) {
-            System.out.println("Please choose display mode: ");
-            mode = sc.nextLine();
-            this.switchUnitsMode(mode);
-        } else if (display.equals("sin")) {
-            this.sin(display);
-        } else if (display.equals("cos")) {
-            this.cos();
-        } else if (display.equals("tan")) {
-            this.tan();
-        } else if (display.equals("invsin")) {
-            this.invSin();
-        } else if (display.equals("invcos")) {
-            this.invCos();
-        } else if (display.equals("invtan")) {
-            this.invTan(userInput);
+            return display;
         }
+
+//        else if (userInput.equals("dmode")) {
+//            System.out.println("Please choose display mode: ");
+//            userInput = sc.nextLine();
+//            this.switchDisplayMode(display);
+//            return true;
+//        } else if (display.equals("cycleu")) {
+//            this.switchUnitsMode();
+//            return true;
+//        }else if (display.equals("umode")) {
+//            System.out.println("Please choose display mode: ");
+//            mode = sc.nextLine();
+//            this.switchUnitsMode(mode);
+//            return true;
+//        } else if (userInput.equals("sin")) {
+//            this.sin(Double.parseDouble(display));
+//        } else if (display.equals("cos")) {
+//            this.cos(Double.parseDouble(display));
+//        } else if (display.equals("tan")) {
+//            this.tan(Double.parseDouble(display));
+//        } else if (display.equals("invsin")) {
+//            this.invSin(Double.parseDouble(display));
+//        } else if (display.equals("invcos")) {
+//            this.invCos(Double.parseDouble(display));
+//        } else if (display.equals("invtan")) {
+//            this.invTan(Double.parseDouble(display));
+//        }
+        return display;
     }
 }
