@@ -5,12 +5,13 @@ import java.util.Scanner;
 public class Calculator {
         int num1 = 0;
         int num2 = 0;
+        int tempNum = 0;
         char operator;
         double answer = 0.0;
         Scanner scanner = new Scanner(System.in);
 
 
-    public void run() {
+    public void run(String userInput) {
             System.out.println("Enter a number: ");
             num1 = scanner.nextInt();
 
