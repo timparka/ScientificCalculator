@@ -11,6 +11,7 @@ public class MainApplication {
         Scanner sc = new Scanner(System.in);
         System.out.print("Please choose which calculator you would like to use: ");
             String userInput = sc.nextLine();
+            //need while loop for program to store memory and run continuously
             if (userInput.equals("calculator")) {
                 new Calculator().run();
             } else if (userInput.equals("scientific")) {
