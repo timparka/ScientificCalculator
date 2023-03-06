@@ -1,5 +1,6 @@
 package com.zipcodewilmington.scientificcalculator;
 
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 import static com.zipcodewilmington.scientificcalculator.MainApplication.isNumeric;
@@ -23,35 +24,39 @@ public class Calculator {
         if (userInput.equals("+")) {
             int y = getYInput();
             int x = getXInput();
-            add(y, x);
+            double sum = add(y, x);
+            System.out.println(sum);
         } else if (userInput.equals("-")) {
             int y = getYInput();
             int x = getXInput();
-            subtract(y, x);
+            double difference = subtract(y, x);
+            System.out.println(difference);
         } else if (userInput.equals("*")) {
             int y = getYInput();
             int x = getXInput();
-            multiply(y, x);
+            double product = multiply(y, x);
+            System.out.println(product);
         } else if (userInput.equals("/")) {
             int y = getYInput();
             int x = getXInput();
-            divide(y, x);
+            double quotient = divide(y, x);
+            System.out.println(quotient);
         }
     }
 
-    public void add(int int1, int int2) {
-        System.out.println(int1 + int2);
+    public double add(int int1, int int2) {
+        return (int1 + int2);
     }
 
-    public void subtract(int int1, int int2) {
-        System.out.println(int1 - int2);
+    public double subtract(int int1, int int2) {
+        return (int1 - int2);
     }
 
-    public void multiply(int int1, int int2) {
-        System.out.println(int1 * int2);
+    public double multiply(int int1, int int2) {
+        return (int1 * int2);
     }
-    public void divide(int int1, int int2) {
-        System.out.println(int1 / int2);
+    public double divide(int int1, int int2) {
+        return (int1 / int2);
     }
 
     public int getYInput() {
