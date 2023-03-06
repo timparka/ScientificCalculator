@@ -36,9 +36,7 @@ public class MainApplication {
                 System.out.println(Double.toHexString(display));
             } else if (scientificFeatures.scientificDisplay.equals("octal")) {
                 System.out.println(Integer.toOctalString((int)Math.round(display)));
-            } else {
-                System.out.println(display + "");
-            }
+            } System.out.println(display + "");
             // 4. Check the user input, see if they entered a number or an operator
             String userInput = sc.nextLine();
             // 2. Make an instruction for if the user enters "quit", Break the while loop
@@ -47,7 +45,6 @@ public class MainApplication {
                 break;
             } else if (userInput.equals("clr")) {
                 display = 0;
-                System.out.println(display);
             }
             //if the user enters a double then make display = new double value
             if (isNumeric(userInput)) {
@@ -77,7 +74,7 @@ public class MainApplication {
     // 7. At the end of the while loop, the display will be shown to the user.
 
     // (this is the last line System.out.println(display))
-    public static boolean isNumeric(String userInput) { //change method name to paruse userinput
+    public static boolean isNumeric(String userInput) { //change method name to parse userinput
         try {
             Double.parseDouble(userInput);
             return true;
