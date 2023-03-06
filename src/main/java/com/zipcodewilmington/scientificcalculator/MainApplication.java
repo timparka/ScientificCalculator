@@ -1,5 +1,7 @@
 package com.zipcodewilmington.scientificcalculator;
 
+import com.sun.source.tree.IfTree;
+
 import java.util.Scanner;
 
 /**
@@ -28,13 +30,24 @@ public class MainApplication {
         while (true) {
             // Ask user for scanner.
             // 3. Every iteration of the while loop will ask the user for the scanner input.
-            System.out.println(display + "");
+            if (scientificFeatures.scientificDisplay.equals("binary")) {
+                System.out.println(Long.toBinaryString(Double.doubleToRawLongBits(display)));
+            } else if (scientificFeatures.scientificDisplay.equals("hex")) {
+                System.out.println(Double.toHexString(display));
+            } else if (scientificFeatures.scientificDisplay.equals("octal")) {
+                System.out.println(Integer.toOctalString((int)Math.round(display)));
+            } else {
+                System.out.println(display + "");
+            }
             // 4. Check the user input, see if they entered a number or an operator
             String userInput = sc.nextLine();
             // 2. Make an instruction for if the user enters "quit", Break the while loop
-            if (userInput == "quit") {
+            if (userInput.equals("quit")) {
                 System.out.println("Calculator app will now quit.");
                 break;
+            } else if (userInput.equals("clr")) {
+                display = 0;
+                System.out.println(display);
             }
             //if the user enters a double then make display = new double value
             if (isNumeric(userInput)) {
