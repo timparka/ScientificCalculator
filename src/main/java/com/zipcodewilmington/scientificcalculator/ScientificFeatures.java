@@ -6,10 +6,8 @@ import org.codehaus.plexus.util.cli.Commandline;
 
 public class ScientificFeatures {
     String scientificDisplay = "decimal";
-    String modeD = "";
-    String modeU = "radians";
+    String modeU = "degrees";
     double result;
-    double mem = 0;
     Scanner sc = new Scanner(System.in);
 
     public ScientificFeatures() {
@@ -40,6 +38,21 @@ public class ScientificFeatures {
         }
     }
 
+    public void switchUnitsMode(double display) {
+        if (modeU.equals("degrees")) {
+            modeU = "radians";
+        } else if (modeU.equals("radians")) {
+            modeU = "degrees";
+        }
+    }
+    //method to switch modes manually and exits program if user enters invalid response
+    public void switchUnitsMode(String userInput) {
+        if (!userInput.equals("degrees") && !userInput.equals("radians")) {
+            throw new IllegalArgumentException("Enter correct value.");
+        } else {
+            this.modeU = userInput;
+        }
+    }
     //gets user input and spits out sin value
     public double sin(double display) {
         result = Math.sin(display);
@@ -61,38 +74,23 @@ public class ScientificFeatures {
     //gets user input and spits out inverse sin value
     public double invSin(double display) {
         result = Math.asin(display);
-        return result;
+        return Math.toRadians(result);
     }
 
     //gets user input and spits out inverse cos value
     public double invCos(double display) {
         result = Math.acos(display);
-        return result;
+        return Math.toRadians(result);
     }
 
     //gets user input and spits out inverse tan value
     public double invTan(double display) {
         result = Math.atan(display);
-        return result;
+        return Math.toRadians(result);
     }
 
     //switches units from degrees to radians
-    public void switchUnitsMode() {
-        if (modeU.equals("degrees")) {
-            modeU = "radians";
-        } else if (modeU.equals("radians")) {
-            modeU = "degrees";
-        }
-    }
 
-    //method to switch modes manually and exits program if user enters invalid response
-    public void switchUnitsMode(String mode) {
-        if (!mode.equals("degrees") && !mode.equals("radians")) {
-            throw new IllegalArgumentException("Enter correct value.");
-        } else {
-            this.modeU = mode;
-        }
-    }
 
 
     //gets user input and uses log base 10 function on number
@@ -102,8 +100,8 @@ public class ScientificFeatures {
     }
 
     //gets user input and uses ln on number
-    public double invLog(double display) {
-        //result = Math.(display);
+    public double invLn(double display) {
+        result = Math.exp(display);
         return result;
     }
 
@@ -113,8 +111,8 @@ public class ScientificFeatures {
         return result;
     }
 
-    public double invLn(double display) {
-        //  result = Math.(display);
+    public double invLog(double display) {
+        result = Math.pow(10, display);
         return result;
     }
 
@@ -129,16 +127,25 @@ public class ScientificFeatures {
     }
 
     public double run(String userInput, double display) {
-        if (userInput.equals("cycled")) {
+        if (userInput.equals("binary")) {
+            this.switchDisplayMode(display);
+            return display;
+        } else if (userInput.equals("hex")) {
+            this.switchDisplayMode(display);
+            return display;
+        }  else if (userInput.equals("octal")) {
+            this.switchDisplayMode(display);
+            return display;
+        } else if (userInput.equals("decimal")) {
             this.switchDisplayMode(display);
             return display;
         } else if (userInput.equals("dmode")) {
             System.out.println("Please choose display mode: ");
-            modeD = sc.nextLine();
-            this.switchDisplayMode(modeD);
+            scientificDisplay = sc.nextLine();
+            this.switchDisplayMode(scientificDisplay);
             return display;
-        } else if (userInput.equals("cycleu")) {
-            this.switchUnitsMode();
+        } else if (userInput.equals("radians")) {
+            this.switchUnitsMode(display);
             return display;
         } else if (userInput.equals("umode")) {
             System.out.println("Please choose display mode: ");
@@ -178,6 +185,18 @@ public class ScientificFeatures {
         } else if (userInput.equals("factorial")) {
             this.factorialFunc(display);
             return result;
+        } else if (userInput.equals("radians")) {
+            this.switchUnitsMode(userInput);
+        } else if (userInput.equals("degrees")) {
+            this.switchUnitsMode(userInput);
+        } else if (userInput.equals("log")) {
+            this.log(display);
+        } else if (userInput.equals("invlog")) {
+            this.invLog(display);
+        } else if (userInput.equals("ln")) {
+            this.ln(display);
+        } else if (userInput.equals("invln")) {
+            this.invLn(display);
         }
         return display;
     }
