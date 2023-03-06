@@ -1,55 +1,43 @@
 package com.zipcodewilmington.scientificcalculator;
+
 import java.util.Scanner;
 
 import org.codehaus.plexus.util.cli.Commandline;
 
 public class ScientificFeatures {
-    String scientificDisplay = "";
-    String mode = "radians";
+    String scientificDisplay = "decimal";
+    String modeD = "";
+    String modeU = "radians";
     double result;
     double mem = 0;
     Scanner sc = new Scanner(System.in);
 
-    public ScientificFeatures(){
+    public ScientificFeatures() {
 
     }
+
     //this method should get current display and switch to next default mode
-    public void switchDisplayMode() {
-        if (scientificDisplay.equals("default")) {
+    public void switchDisplayMode(double display) {
+        if (scientificDisplay.equals("decimal")) {
             scientificDisplay = "binary";
         } else if (scientificDisplay.equals("binary")) {
+            scientificDisplay = "hex";
+        } else if (scientificDisplay.equals("hex")) {
             scientificDisplay = "octal";
         } else if (scientificDisplay.equals("octal")) {
             scientificDisplay = "decimal";
-        } else if (scientificDisplay.equals("decimal")) {
-            scientificDisplay = "hexadecimal";
-        } else if (scientificDisplay.equals("hexadecimal"))
-            scientificDisplay = "default";
+        }
     }
 
     //method provides a way to switch displays manually
     public void switchDisplayMode(String display) {
-        if (!display.equals("default") && !display.equals("binary")
+        if (!display.equals("hex") && !display.equals("binary")
                 && !display.equals("octal")
-                && !display.equals("decimal")
-                && !display.equals("hexadecimal")) {
+                && !display.equals("decimal")) {
             throw new IllegalArgumentException("Enter correct value.");
         } else {
             this.scientificDisplay = display;
         }
-    }
-
-    //method provides a way to do something with display value based on user input
-    public double storeValue(String memKey, double currentlyOnDisplay) {
-        if (memKey.equals("M+")) {
-            mem = currentlyOnDisplay;
-        } else if (memKey.equals("MC")) {
-            mem = 0;
-        } else if (memKey.equals("MRC")) {
-            return mem;
-        }
-
-        return mem;
     }
 
     //gets user input and spits out sin value
@@ -90,34 +78,34 @@ public class ScientificFeatures {
 
     //switches units from degrees to radians
     public void switchUnitsMode() {
-        if (mode.equals("degrees")) {
-            mode = "radians";
-        } else if (mode.equals("radians")) {
-            mode = "degrees";
+        if (modeU.equals("degrees")) {
+            modeU = "radians";
+        } else if (modeU.equals("radians")) {
+            modeU = "degrees";
         }
     }
 
     //method to switch modes manually and exits program if user enters invalid response
     public void switchUnitsMode(String mode) {
-            if (!mode.equals("degrees") && !mode.equals("radians")) {
-                throw new IllegalArgumentException("Enter correct value.");
-            } else {
-                this.mode = mode;
-            }
+        if (!mode.equals("degrees") && !mode.equals("radians")) {
+            throw new IllegalArgumentException("Enter correct value.");
+        } else {
+            this.modeU = mode;
         }
+    }
 
 
-        //gets user input and uses log base 10 function on number
-        public double log(double display) {
-            result = Math.log10(display);
-            return result;
-        }
+    //gets user input and uses log base 10 function on number
+    public double log(double display) {
+        result = Math.log10(display);
+        return result;
+    }
 
-        //gets user input and uses ln on number
-        public double invLog(double display) {
-            //result = Math.(display);
-            return result;
-        }
+    //gets user input and uses ln on number
+    public double invLog(double display) {
+        //result = Math.(display);
+        return result;
+    }
 
     //gets user input and
     public double ln(double display) {
@@ -126,52 +114,71 @@ public class ScientificFeatures {
     }
 
     public double invLn(double display) {
-      //  result = Math.(display);
+        //  result = Math.(display);
         return result;
     }
 
 
     public double factorialFunc(double display) {
-        for (int i = 0; i <= display; i++) {
-            result *= i;
+        double fact = 1;
+        for (int i = 1; i <= display; i++) {
+            fact *= i;
+            result = fact;
         }
         return result;
     }
 
     public double run(String userInput, double display) {
         if (userInput.equals("cycled")) {
-            this.switchDisplayMode();
+            this.switchDisplayMode(display);
             return display;
         } else if (userInput.equals("dmode")) {
-            this.switchDisplayMode();
+            System.out.println("Please choose display mode: ");
+            modeD = sc.nextLine();
+            this.switchDisplayMode(modeD);
+            return display;
+        } else if (userInput.equals("cycleu")) {
+            this.switchUnitsMode();
+            return display;
+        } else if (userInput.equals("umode")) {
+            System.out.println("Please choose display mode: ");
+            modeU = sc.nextLine();
+            this.switchUnitsMode(modeU);
+            return display;
+        } else if (userInput.equals("sin")) {
+            this.sin(display);
+            return result;
+        } else if (userInput.equals("cos")) {
+            this.cos(display);
+            return result;
+        } else if (userInput.equals("tan")) {
+            this.tan(display);
+            return result;
+        } else if (userInput.equals("invsin")) {
+            this.invSin(display);
+            return result;
+        } else if (userInput.equals("invcos")) {
+            this.invCos(display);
+            return result;
+        } else if (userInput.equals("invtan")) {
+            this.invTan(display);
+            return result;
+        } else if (userInput.equals("log")) {
+            this.log(display);
+            return result;
+        } else if (userInput.equals("invlog")) {
+            this.invLog(display);
+            return result;
+        } else if (userInput.equals("ln")) {
+            this.ln(display);
+            return result;
+        } else if (userInput.equals("invln")) {
+            this.invLn(display);
+            return result;
+        } else if (userInput.equals("factorial")) {
+            this.factorialFunc(display);
+            return result;
         }
-
-//        else if (userInput.equals("dmode")) {
-//            System.out.println("Please choose display mode: ");
-//            userInput = sc.nextLine();
-//            this.switchDisplayMode(display);
-//            return true;
-//        } else if (display.equals("cycleu")) {
-//            this.switchUnitsMode();
-//            return true;
-//        }else if (display.equals("umode")) {
-//            System.out.println("Please choose display mode: ");
-//            mode = sc.nextLine();
-//            this.switchUnitsMode(mode);
-//            return true;
-//        } else if (userInput.equals("sin")) {
-//            this.sin(Double.parseDouble(display));
-//        } else if (display.equals("cos")) {
-//            this.cos(Double.parseDouble(display));
-//        } else if (display.equals("tan")) {
-//            this.tan(Double.parseDouble(display));
-//        } else if (display.equals("invsin")) {
-//            this.invSin(Double.parseDouble(display));
-//        } else if (display.equals("invcos")) {
-//            this.invCos(Double.parseDouble(display));
-//        } else if (display.equals("invtan")) {
-//            this.invTan(Double.parseDouble(display));
-//        }
         return display;
     }
 }
