@@ -20,11 +20,46 @@ public class Calculator {
                 result = display + yValue;//this is logic line
                 return result; //result of x + y and returns it calc.run();
             }
+        } else if (userInput.equals ("-")) {
+            System.out.println("Enter second number: ");
+            yValueInput = scanner.nextLine();
+            if (isNumeric(yValueInput)) { //checks if its a number
+                yValue = Double.parseDouble(yValueInput);//parses string as double
+                result = display - yValue;//this is logic line
+                return result; //result of x - y and returns it calc.run();
+            }
+        } else if (userInput.equals ("*") {
+            System.out.println("Enter second number: ");
+            yValueInput = scanner.nextLine();
+            if (isNumeric(yValueInput)) { //checks if its a number
+                yValue = Double.parseDouble(yValueInput);//parses string as double
+                result = display * yValue;//this is logic line
+                return result; //result of x * y and returns it calc.run();//
+            }
+        } else if (userInput.equals ("/") {
+            System.out.println("Enter second number: ");
+            yValueInput = scanner.nextLine();
+            if (isNumeric(yValueInput)) { //checks if its a number
+                yValue = Double.parseDouble(yValueInput);//parses string as double
+                result = display / yValue;//this is logic line
+                return result; //result of x / y and returns it calc.run();//
+            }
         } else if (userInput.equals("sq")) {
             result = display * display;//logic line
             return result; //return line
+        } else if (userInput.equals("sqrt")) {
+            result = Math.sqrt(display);//logic line
+            return result;
+        } else if (userInput.equals("x^y")) {
+            result = Math.pow(display, yValue) ;//logic line
+            return result; //return line
+        } else if (userInput.equals("1/x")) {
+            result = 1 / display;//logic line
+            return result;
+        } else if (userInput.equals("-x")) {
+            result = -1 * display;//logic line
+            return result; //return line
         }
-
         return display;//checks if user inputs out of bounds input then method spits out original number input from beginning
     }
 }
